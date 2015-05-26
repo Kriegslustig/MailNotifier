@@ -15,9 +15,7 @@
     "marked-man": "latest"
   },
   "dependencies": {
-    "underscore": "latest"
-  },
-  "scripts": {
-    "prepublish": "marked-man README.md > man/mail-notifier.1"
+    "underscore": "latest",
+    "optimist": "latest"
   }
 }

@@ -10,6 +10,6 @@ var cli = require('./lib/cli')
 
 ; (function main (argv) {
   var action = argv._[0]
-  if(action == 'deamon') deamon.main()
-  if(action == 'add') cli.add()
+  if(action == 'deamon') deamon.main(argv)
+  if(action == 'add') cli.add(argv)
 })(require('optimist').argv)

@@ -12,10 +12,14 @@
   "main": "./lib/jsheets.js",
   "man": "man/mail-notifier.1",
   "devDependencies": {
-    "marked-man": "latest"
+    "marked-man": "latest",
+    "mocha": "latest"
   },
   "dependencies": {
     "underscore": "latest",
     "optimist": "latest"
+  },
+  "scripts": {
+    "test": "mocha --watch --reporter landing test/ 2> /dev/null"
   }
 }

@@ -63,8 +63,23 @@ describe('tForm', function () {
       assert.equal(3600000, tForm.time('0100'))
     })
   })
-  describe('dateFormat', function () {
-    it('should be able to parse dd.mm')
+
+  describe('date', function () {
+    it('should be able to parse dd.mm', function () {
+      assert.ok(tForm.date('01.01'))
+    })
   })
+
+  describe('year', function () {
+    it('should return the current year plus one if the date has passed', function () {
+      var today = new Date
+      assert.equal(today.getUTCFullYear() + 1, tForm.year(1, 1))
+    })
+    it('should return the current year if the date hasn\'t passed', function () {
+      var today = new Date
+      assert.equal(today.getUTCFullYear(), tForm.year(today.getUTCDate() + 1, today.getUTCMonth()))
+    })
+  })
+
   describe('()', function () {})
 })

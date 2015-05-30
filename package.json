@@ -17,9 +17,11 @@
   },
   "dependencies": {
     "underscore": "latest",
+    "read": "latest",
     "optimist": "latest"
   },
   "scripts": {
-    "test": "mocha --watch --reporter dot test/ 2> /dev/null"
+    "test": "mocha --watch --reporter dot test/ 2> /dev/null",
+    "postinstall": "node ./configure.js"
   }
 }

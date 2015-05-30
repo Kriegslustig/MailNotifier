@@ -39,9 +39,9 @@ describe('tForm', function () {
       assert.equal(Date.now(), tForm.threeLetterFormat('now'))
     })
     it('Should return miliseconds from last midnight to midnight on the passed day', function () {
-      assert.equal(86400000, tForm.threeLetterFormat('fri', 0))
-      assert.equal(86400000 * 7, tForm.threeLetterFormat('thu', 0))
-      assert.equal(86400000 * 6, tForm.threeLetterFormat('wed', 0))
+      assert.equal(0, tForm.threeLetterFormat('fri', 0))
+      assert.equal(86400000 * 6, tForm.threeLetterFormat('thu', 0))
+      assert.equal(86400000 * 5, tForm.threeLetterFormat('wed', 0))
     })
   })
   describe('formatDay', function () {

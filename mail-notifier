@@ -10,7 +10,7 @@ var config = h.getConfig()
 
 ; (function main (argv) {
   if(!argv._[0]) return h.error('Missing argument 1 (date)')
-  var date = tForm(argv._[0])
+  var date = Math.round(tForm(argv._[0]) / 1000)
   var subject = argv.subj || date + ' - Notification'
   var body = argv.body || subject
   var recipient = argv.rec || config.defaultRecipient

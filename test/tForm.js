@@ -57,6 +57,7 @@ describe('tForm', function () {
     })
     it('Should be able to parse hh:mm[:ss]', function () {
       assert.equal(3600000, tForm.time('01:00'))
+      assert.equal(0, tForm.time('00:00'))
       assert.equal(3600000, tForm.time('01:00:00'))
     })
     it('Should be able to parse hhmm[ss]', function () {
@@ -81,5 +82,27 @@ describe('tForm', function () {
     })
   })
 
-  describe('()', function () {})
+  describe('midnight', function () {
+    it('should return the last midnight in MS-utc', function () {
+      assert.equal(0, tForm.midnight(2))
+      assert.equal(0, tForm.midnight(10000))
+    })
+  })
+
+  describe('formatDate', function () {
+    it('should be able to parse both threeLetterFormat and normal dateformats', function () {
+      assert.ok(tForm.formatDate('01.01'))
+      assert.equal(0, tForm.formatDate('now'))
+    })
+  })
+
+  describe('()', function () {
+    it('should return a unixtime stamp with the time passed to it', function () {
+      var testTime = new Date
+      var tomorrow = tForm.midnight(testTime.getTime() + 86400000)
+      testTime.setTime(tomorrow)
+      assert.equal(tForm.unnormalize(tomorrow), tForm('00:00' +  '-' + testTime.getUTCDate() + '.' + (testTime.getUTCMonth() + 1)))
+      assert.equal(tForm.unnormalize(tomorrow) + 3600000, tForm('01:00' + '-' + testTime.getUTCDate() + '.' + (testTime.getUTCMonth() + 1)))
+    })
+  })
 })

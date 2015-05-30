@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "bin": {
-    "mail-notifier": "./MailNotifier.js"
+    "mail-notifier": "./mail-notifier"
   },
   "main": "./lib/jsheets.js",
   "man": "man/mail-notifier.1",
@@ -20,6 +20,6 @@
     "optimist": "latest"
   },
   "scripts": {
-    "test": "mocha --watch --reporter landing test/ 2> /dev/null"
+    "test": "mocha --watch --reporter dot test/ 2> /dev/null"
   }
 }

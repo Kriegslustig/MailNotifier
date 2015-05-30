@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var _ = require('underscore')
+
+var tForm = require('./lib/tForm')
+var mandrill = require('./lib/mandrill')
+var h = require('./lib/helpers')
+
+var config = h.getConfig()
+
+; (function main (argv) {
+  if(!argv._[0]) return h.error('Missing argument 1 (date)')
+  var date = tForm(argv._[0])
+  var subject = argv.subj || date + ' - Notification'
+  var body = argv.body || subject
+  var recipient = argv.rec || config.defaultRecipient
+  mandrill.sendFormat(date, body, subject, recipient)
+})(require('optimist').argv)

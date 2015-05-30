@@ -36,7 +36,7 @@ describe('tForm', function () {
 
   describe('threeLetterFormat', function () {
     it('Should take now as an argument and then return 0', function () {
-      assert.equal(0, tForm.threeLetterFormat('now'))
+      assert.equal(Date.now(), tForm.threeLetterFormat('now'))
     })
     it('Should return miliseconds from last midnight to midnight on the passed day', function () {
       assert.equal(86400000, tForm.threeLetterFormat('fri', 0))
@@ -92,7 +92,7 @@ describe('tForm', function () {
   describe('formatDate', function () {
     it('should be able to parse both threeLetterFormat and normal dateformats', function () {
       assert.ok(tForm.formatDate('01.01'))
-      assert.equal(0, tForm.formatDate('now'))
+      assert.equal(Date.now(), tForm.formatDate('now'))
     })
   })
 
@@ -103,6 +103,7 @@ describe('tForm', function () {
       testTime.setTime(tomorrow)
       assert.equal(tForm.unnormalize(tomorrow), tForm('00:00' +  '-' + testTime.getUTCDate() + '.' + (testTime.getUTCMonth() + 1)))
       assert.equal(tForm.unnormalize(tomorrow) + 3600000, tForm('01:00' + '-' + testTime.getUTCDate() + '.' + (testTime.getUTCMonth() + 1)))
+      assert.equal(Date.now(), tForm('now'))
     })
   })
 })
